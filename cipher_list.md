@@ -1,5 +1,6 @@
 # Ciphers
 
+
 ## Caeser Cipher
  - Type: Substitution cipher.
  - How it Works: Typically, the Caesar Cipher shifts the alphabet by a certain number of positions. When using a word as a key, the letters of the key determine how much each letter of the plaintext is shifted.
