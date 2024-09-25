@@ -3,8 +3,7 @@ import sys
 import os
 
 # Add the src directory to the system path
-sys.path.append("/home/mahrufhossain/Maahi's Folders/projects/cipher_cat_meow2/src")
-
+sys.path.append(os.path.join(os.path.dirname(__file__), '../src'))
 
 from typing import Any
 import unittest
