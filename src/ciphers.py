@@ -15,6 +15,36 @@ class Cipher(ABC):
 
 class Caeser_Cipher(Cipher):
 
-    pass
+    def encrypt(text: str, key: str) -> str:
+        
+        encrypted : str = ""
+
+        shift : int = len(key)
+
+        for char in text:
+            if char.isalpha():
+                shift_amount = 65 if char.isupper() else 97
+                encrypted += chr((ord(char) - shift_amount + shift) % 26 + shift_amount)
+            else:
+                encrypted += char
+        return encrypted
+    
+    def decrypt(text: str, key: str) -> str:
+        decrypted : str = ""
+
+        shift : int = len(key)
+
+        for char in text:
+            if char.isalpha():
+                shift_amount = 65 if char.isupper() else 97
+                decrypted += chr((ord(char) - shift_amount - shift) % 26 + shift_amount)
+
+            else:
+                decrypted += char
+
+        return decrypted
+
+
+
 
 
