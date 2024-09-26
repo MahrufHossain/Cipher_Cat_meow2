@@ -1,9 +1,9 @@
-from ciphers import Caeser_Cipher
+from ciphers import *
 import random
-
+import time
 
 cipher_dictionary: dict = {
-    "Caeser_Cipher": [
+    "Caesar_Cipher": [
         "Moonlight",
         "Claw",
         "Serendipity",
@@ -15,7 +15,7 @@ cipher_dictionary: dict = {
         "Ridge",
         "Flare",
     ],
-    "Viginere_Cipher": [
+    "Vigenere_Cipher": [
         "Eclipse",
         "Fox",
         "Labyrinth",
@@ -51,7 +51,7 @@ cipher_dictionary: dict = {
         "Ripple",
         "Crescent",
     ],
-    "Railefence_Cipher": [
+    "RailFence_Cipher": [
         "Lynx",
         "Radiant",
         "Orb",
@@ -111,7 +111,7 @@ cipher_dictionary: dict = {
         "Nebula",
         "Arcane",
     ],
-    "KeyWord_Cipher": [
+    "Keyword_Cipher": [
         "Valor",
         "Cascade",
         "Volt",
@@ -135,37 +135,77 @@ def random_key() -> tuple:
 
 
 def main():
+    cipher_name, key = random_key()
+    if cipher_name == "Caesar_Cipher":
+        cipher = Caesar_Cipher()
+
+    elif cipher_name == "Vigenere_Cipher":
+        cipher = Vigenere_Cipher()
+    elif cipher_name == "Playfair_Cipher":
+        cipher = Playfair_Cipher()
+    elif cipher_name == "Beaufort_Cipher":
+        cipher = Beaufort_Cipher()
+    elif cipher_name == "RailFence_Cipher":
+        cipher = RailFence_Cipher()
+    elif cipher_name == "ColumnarTransposition_Cipher":
+        cipher = ColumnarTransposition_Cipher()
+    elif cipher_name == "Affine_Cipher":
+        cipher = Affine_Cipher()
+    elif cipher_name == "Autokey_Cipher":
+        cipher = Autokey_Cipher()
+    elif cipher_name == "RunningKey_Cipher":
+        cipher = RunningKey_Cipher()
+    elif cipher_name == "Keyword_Cipher":
+        cipher = Keyword_Cipher()
+
     while True:
         print(
-            "What do you want to do?\n1. Encrypt\n2. Decrypt\n3. Exit\n---------------------------------------------------"
+            "---------------------------------------------------\nWhat do you want to do?\n1. Encrypt\n2. Decrypt\n3. Exit\n---------------------------------------------------"
         )
 
-        choice: int = int(input("Please enter your choice: "))
+        try:
+            choice: int = int(input("Please enter your choice: "))
 
-        if choice == 1:
-            text: str = str(input("Enter your text: "))
+            if choice == 1:
+                text: str = str(
+                    input(
+                        "---------------------------------------------------\nEnter your text:\t"
+                    )
+                )
 
-            key = random.choice(list(cipher_dictionary["Caeser_Cipher"]))
+                key = random.choice(list(cipher_dictionary[cipher_name]))
+                encrypted_text = cipher.encrypt(text=text, key=key)
+                print("---------------------------------------------------")
+                print(f"Your Encrypted Text:\t{encrypted_text}.\t\tYour Key:\t{key}")
 
-            encrypted_text = Caeser_Cipher.encrypt(text=text, key=key)
+            elif choice == 2:
+                text: str = str(
+                    input(
+                        "---------------------------------------------------\nEnter your text:\t"
+                    )
+                )
 
-            print(key, text, encrypted_text)
+                key: str = str(
+                    input(
+                        "---------------------------------------------------\nEnter your key: "
+                    )
+                )
 
-        elif choice == 2:
-            text: str = str(input("Enter your text: "))
+                decrypted_text = cipher.decrypt(text, key)
+                print("---------------------------------------------------")
+                print(f"Your Decrypted Text:\t{decrypted_text}")
 
-            key: str = str(input("Enter your key: "))
+            elif choice == 3:
+                print("---------------------------------------------------\nExiting")
+                time.sleep(2)
+                return
 
-            decrypted_text = Caeser_Cipher.decrypt(text, key)
+            else:
+                print("Invalid choice!!")
 
-            print(decrypted_text)
-
-        elif choice == 3:
-
-            return
-
-        else:
-            print("Invalid choice!!")
+        except ValueError:
+            print("\nInter an integer.")
+            continue
 
 
 if __name__ == "__main__":
