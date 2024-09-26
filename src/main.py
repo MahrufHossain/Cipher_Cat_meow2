@@ -1,4 +1,4 @@
-from ciphers import *
+from ciphers import Caeser_Cipher
 import random
 
 
@@ -126,11 +126,46 @@ cipher_dictionary: dict = {
 }
 
 
-def main():
+def random_key() -> tuple:
+
     cipher_name = random.choice(list(cipher_dictionary.keys()))
     key = random.choice(cipher_dictionary[cipher_name])
 
-    print(cipher_name, key)
+    return (cipher_name, key)
+
+
+def main():
+    while True:
+        print(
+            "What do you want to do?\n1. Encrypt\n2. Decrypt\n3. Exit\n---------------------------------------------------"
+        )
+
+        choice: int = int(input("Please enter your choice: "))
+
+        if choice == 1:
+            text: str = str(input("Enter your text: "))
+
+            key = random.choice(list(cipher_dictionary["Caeser_Cipher"]))
+
+            encrypted_text = Caeser_Cipher.encrypt(text=text, key=key)
+
+            print(key, text, encrypted_text)
+
+        elif choice == 2:
+            text: str = str(input("Enter your text: "))
+
+            key: str = str(input("Enter your key: "))
+
+            decrypted_text = Caeser_Cipher.decrypt(text, key)
+
+            print(decrypted_text)
+
+        elif choice == 3:
+
+            return
+
+        else:
+            print("Invalid choice!!")
 
 
 if __name__ == "__main__":
