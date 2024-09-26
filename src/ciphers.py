@@ -45,6 +45,81 @@ class Caeser_Cipher(Cipher):
         return decrypted
 
 
+class Viginere_Cipher(Cipher):
+    def encrypt(self, text: str, key: str) -> str:
+        pass
+
+    def decrypt(self, text: str, key: str) -> str:
+        pass
+
+
+class Playfair_Cipher(Cipher):
+    def encrypt(self, text: str, key: str) -> str:
+        pass
+
+    def decrypt(self, text: str, key: str) -> str:
+        pass
+
+
+class Beaufort_Cipher(Cipher):
+    def encrypt(self, text: str, key: str) -> str:
+        pass
+
+    def decrypt(self, text: str, key: str) -> str:
+        pass
+
+
+class Railefence_Cipher(Cipher):
+    def encrypt(self, text: str, key: str) -> str:
+        pass
+
+    def decrypt(self, text: str, key: str) -> str:
+        pass
+
+
+class ColumnarTransposition_Cipher(Cipher):
+    def encrypt(self, text: str, key: str) -> str:
+        pass
+
+    def decrypt(self, text: str, key: str) -> str:
+        pass
+
+
+class Affine_Cipher(Cipher):
+    def encrypt(self, text: str, key: str) -> str:
+        pass
+
+    def decrypt(self, text: str, key: str) -> str:
+        pass
+
+
+class Autokey_Cipher(Cipher):
+    def encrypt(self, text: str, key: str) -> str:
+        pass
+
+    def decrypt(self, text: str, key: str) -> str:
+        pass
+
+
+class RunningKey_Cipher(Cipher):
+    def encrypt(self, text: str, key: str) -> str:
+        pass
+
+    def decrypt(self, text: str, key: str) -> str:
+        pass
+
+
+class KeyWord_Cipher(Cipher):
+    def encrypt(self, text: str, key: str) -> str:
+        pass
+
+    def decrypt(self, text: str, key: str) -> str:
+        pass
+
+
+
+
+
 
 
 
